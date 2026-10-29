@@ -21,7 +21,6 @@ import {
   FaInfinity,
   FaCertificate,
   FaArrowRight,
-  FaGlobe,
   FaEnvelope,
   FaPhone,
   FaMapMarkerAlt,
@@ -32,7 +31,6 @@ import {
   FaChevronDown,
   FaLaptopCode,
   FaRegHeart,
-  FaFire,
   FaPaperPlane,
 } from "react-icons/fa";
 import "./style.css";
@@ -59,7 +57,7 @@ const courses = [
     oldPrice: 2499,
     duration: "24 hours",
     level: "Beginner",
-    image:"https://i.pinimg.com/736x/99/b3/f3/99b3f36de5cd3a669b4c4f72fc940783.jpg",
+    image: "https://i.pinimg.com/736x/99/b3/f3/99b3f36de5cd3a669b4c4f72fc940783.jpg",
     badge: "Bestseller",
     color: "blue",
   },
@@ -75,7 +73,7 @@ const courses = [
     oldPrice: 2199,
     duration: "18 hours",
     level: "Beginner",
-    image:"https://i.pinimg.com/736x/2b/0d/4d/2b0d4d78685a644953702214c497d81c.jpg",
+    image: "https://i.pinimg.com/736x/2b/0d/4d/2b0d4d78685a644953702214c497d81c.jpg",
     badge: "Popular",
     color: "yellow",
   },
@@ -91,7 +89,7 @@ const courses = [
     oldPrice: 2999,
     duration: "32 hours",
     level: "Intermediate",
-    image:"https://i.pinimg.com/736x/e3/12/c8/e312c8b957c995cc9c304aeaf2e87374.jpg",
+    image: "https://i.pinimg.com/736x/e3/12/c8/e312c8b957c995cc9c304aeaf2e87374.jpg",
     badge: "Trending",
     color: "blue",
   },
@@ -107,7 +105,7 @@ const courses = [
     oldPrice: 2499,
     duration: "16 hours",
     level: "Beginner",
-    image:"https://i.pinimg.com/736x/8e/36/7f/8e367fdcb3518e292acc883c0aca1070.jpg",
+    image: "https://i.pinimg.com/736x/8e/36/7f/8e367fdcb3518e292acc883c0aca1070.jpg",
     badge: "New",
     color: "pink",
   },
@@ -123,7 +121,7 @@ const courses = [
     oldPrice: 1899,
     duration: "12 hours",
     level: "Beginner",
-    image:"https://i.pinimg.com/736x/87/c6/cb/87c6cb07e95350f5ed2288fd05b50211.jpg",
+    image: "https://i.pinimg.com/736x/87/c6/cb/87c6cb07e95350f5ed2288fd05b50211.jpg",
     badge: "Popular",
     color: "blue",
   },
@@ -139,7 +137,7 @@ const courses = [
     oldPrice: 1999,
     duration: "14 hours",
     level: "All levels",
-    image:"https://i.pinimg.com/1200x/0d/98/9e/0d989ec15e5eabe357d327034c059ca0.jpg",
+    image: "https://i.pinimg.com/1200x/0d/98/9e/0d989ec15e5eabe357d327034c059ca0.jpg",
     badge: "Featured",
     color: "skyblue",
   },
@@ -155,7 +153,7 @@ const courses = [
     oldPrice: 1799,
     duration: "10 hours",
     level: "Beginner",
-    image:"https://i.pinimg.com/1200x/88/59/be/8859be10f7284dc3a8466ce90484572d.jpg",
+    image: "https://i.pinimg.com/1200x/88/59/be/8859be10f7284dc3a8466ce90484572d.jpg",
     badge: "New",
     color: "yellow",
   },
@@ -171,7 +169,7 @@ const courses = [
     oldPrice: 3299,
     duration: "28 hours",
     level: "Advanced",
-    image:"https://i.pinimg.com/736x/78/fd/6d/78fd6dd13904b38d57af1c6721b6e6ce.jpg",
+    image: "https://i.pinimg.com/736x/78/fd/6d/78fd6dd13904b38d57af1c6721b6e6ce.jpg",
     badge: "Bestseller",
     color: "blue",
   },
@@ -181,19 +179,19 @@ const testimonials = [
   {
     name: "Nivitha",
     role: "Frontend Developer",
-    image:"https://i.pinimg.com/736x/0a/d1/93/0ad19309a59be71b028548801ac38353.jpg",
+    image: "https://i.pinimg.com/736x/0a/d1/93/0ad19309a59be71b028548801ac38353.jpg",
     text: "BrightLearn helped me learn React from scratch. The practical projects gave me the confidence to build my own portfolio and apply for developer jobs.",
   },
   {
     name: "Uday",
     role: "Data Analyst",
-    image:"https://i.pinimg.com/736x/e9/c5/1a/e9c51a0a6819c3b0032b44c46fd199b0.jpg",
+    image: "https://i.pinimg.com/736x/e9/c5/1a/e9c51a0a6819c3b0032b44c46fd199b0.jpg",
     text: "The Python and data science courses made difficult topics easier to understand. I can learn at my own pace whenever I have free time.",
   },
   {
     name: "Meera",
     role: "UI/UX Designer",
-    image:"https://i.pinimg.com/1200x/1f/15/70/1f1570ded07a4d4fea0d9b28dffbc037.jpg",
+    image: "https://i.pinimg.com/1200x/1f/15/70/1f1570ded07a4d4fea0d9b28dffbc037.jpg",
     text: "The design courses have excellent explanations and useful assignments. I have improved my design skills and created stronger projects.",
   },
 ];
@@ -241,6 +239,15 @@ function App() {
   const [notice, setNotice] = useState("");
   const [showAllCourses, setShowAllCourses] = useState(false);
 
+  // Contact form states
+  const [contactForm, setContactForm] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [contactSubmitted, setContactSubmitted] = useState(false);
+
   useEffect(() => {
     AOS.init({
       duration: 850,
@@ -250,6 +257,7 @@ function App() {
     });
 
     let value = 0;
+
     const timer = setInterval(() => {
       value += 4;
       setProgress(Math.min(value, 100));
@@ -309,6 +317,7 @@ function App() {
         ? current
         : [...current, course]
     );
+
     showNotice(`${course.title} added to your learning cart!`);
   };
 
@@ -319,6 +328,19 @@ function App() {
 
     setSubscribed(true);
     setEmail("");
+  };
+
+  const handleContactSubmit = (event) => {
+    event.preventDefault();
+
+    setContactSubmitted(true);
+
+    setContactForm({
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    });
   };
 
   const closeMenu = () => setMenuOpen(false);
@@ -379,6 +401,7 @@ function App() {
         </a>
       </div>
 
+      {/* NAVBAR */}
       <header className="site-header">
         <nav className="navbar container">
           <a className="brand" href="#home" onClick={closeMenu}>
@@ -405,14 +428,16 @@ function App() {
             <a href="#courses" onClick={closeMenu}>Courses</a>
             <a href="#about" onClick={closeMenu}>About</a>
             <a href="#reviews" onClick={closeMenu}>Reviews</a>
-            <a href="#contact" onClick={closeMenu}>Contact</a>
+            <a href="#contact-page" onClick={closeMenu}>Contact</a>
           </div>
 
           <div className="nav-actions">
             <a className="nav-login" href="#newsletter">Log in</a>
+
             <a className="btn btn-primary nav-signup" href="#newsletter">
               Sign Up <FaArrowRight />
             </a>
+
             <a className="cart-link" href="#courses" aria-label="Learning cart">
               <span><FaGraduationCap /></span>
               <b>{cart.length}</b>
@@ -422,6 +447,7 @@ function App() {
       </header>
 
       <main>
+        {/* HERO */}
         <section className="hero-section" id="home">
           <div className="hero-glow hero-glow-one" />
           <div className="hero-glow hero-glow-two" />
@@ -448,12 +474,13 @@ function App() {
                 className="hero-search"
                 onSubmit={(event) => {
                   event.preventDefault();
-                  document
-                    .getElementById("courses")
-                    ?.scrollIntoView({ behavior: "smooth" });
+                  document.getElementById("courses")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
                 }}
               >
                 <FaSearch />
+
                 <input
                   type="search"
                   placeholder="What do you want to learn?"
@@ -461,6 +488,7 @@ function App() {
                   onChange={(event) => setSearch(event.target.value)}
                   aria-label="Search courses"
                 />
+
                 <button className="btn btn-primary" type="submit">
                   Search
                 </button>
@@ -488,7 +516,11 @@ function App() {
               </div>
             </div>
 
-            <div className="hero-visual" data-aos="fade-left" data-aos-delay="180">
+            <div
+              className="hero-visual"
+              data-aos="fade-left"
+              data-aos-delay="180"
+            >
               <div className="visual-decoration visual-decoration-one" />
               <div className="visual-decoration visual-decoration-two" />
 
@@ -506,6 +538,7 @@ function App() {
                   alt="Students learning together"
                 />
                 <div className="image-gradient" />
+
                 <div className="hero-image-caption">
                   <span className="live-dot" />
                   <div>
@@ -537,6 +570,7 @@ function App() {
 
           <div className="container trusted-row" data-aos="fade-up">
             <p>SKILLS FOR TOMORROW'S CAREERS</p>
+
             <div className="trusted-brands">
               <span><FaCode /> DEV SKILLS</span>
               <span><FaChartLine /> DATA LAB</span>
@@ -546,14 +580,18 @@ function App() {
           </div>
         </section>
 
+        {/* CATEGORIES */}
         <section className="section categories-section" id="categories">
           <div className="container">
             <div className="section-heading" data-aos="fade-up">
               <div>
                 <span className="section-kicker">EXPLORE YOUR INTERESTS</span>
-                <h2>Find your next <span className="text-gradient">passion.</span></h2>
+                <h2>
+                  Find your next <span className="text-gradient">passion.</span>
+                </h2>
                 <p>Explore subjects that move your career forward.</p>
               </div>
+
               <a href="#courses" className="text-link">
                 Browse courses <FaArrowRight />
               </a>
@@ -568,12 +606,14 @@ function App() {
                   }`}
                   onClick={() => {
                     setActiveCategory(
-                      activeCategory === category.name ? "All" : category.name
+                      activeCategory === category.name
+                        ? "All"
+                        : category.name
                     );
                     setShowAllCourses(true);
-                    document
-                      .getElementById("courses")
-                      ?.scrollIntoView({ behavior: "smooth" });
+                    document.getElementById("courses")?.scrollIntoView({
+                      behavior: "smooth",
+                    });
                   }}
                   data-aos="fade-up"
                   data-aos-delay={index * 70}
@@ -581,26 +621,31 @@ function App() {
                   <span className={`category-icon category-icon-${index + 1}`}>
                     {category.icon}
                   </span>
+
                   <strong>{category.name}</strong>
                   <small>{category.count}</small>
-                  <span className="category-arrow"><FaArrowRight /></span>
+
+                  <span className="category-arrow">
+                    <FaArrowRight />
+                  </span>
                 </button>
               ))}
             </div>
           </div>
         </section>
 
+        {/* COURSES */}
         <section className="section courses-section" id="courses">
           <div className="container">
             <div className="section-heading" data-aos="fade-up">
               <div>
                 <span className="section-kicker">LEARN SOMETHING AMAZING</span>
-                <h2>Popular <span className="text-gradient">courses.</span></h2>
+                <h2>
+                  Popular <span className="text-gradient">courses.</span>
+                </h2>
                 <p>Handpicked learning experiences to help you grow.</p>
               </div>
-              <div className="course-heading-side">
-                
-              </div>
+              <div className="course-heading-side" />
             </div>
 
             <div className="course-controls" data-aos="fade-up">
@@ -620,6 +665,7 @@ function App() {
                   </button>
                 ))}
               </div>
+
               <label className="course-search">
                 <FaSearch />
                 <input
@@ -642,10 +688,16 @@ function App() {
                     data-aos-delay={(index % 4) * 80}
                   >
                     <div className="course-image">
-                      <img src={course.image} alt={course.title} loading="lazy" />
+                      <img
+                        src={course.image}
+                        alt={course.title}
+                        loading="lazy"
+                      />
+
                       <span className={`course-badge badge-${course.color}`}>
                         {course.badge}
                       </span>
+
                       <button
                         className={`favorite-btn ${
                           favorites.includes(course.id) ? "favorite-active" : ""
@@ -655,6 +707,7 @@ function App() {
                       >
                         <FaRegHeart />
                       </button>
+
                       <span className="course-image-overlay">
                         <FaPlay /> Explore course
                       </span>
@@ -685,9 +738,14 @@ function App() {
 
                       <div className="course-bottom">
                         <div className="course-price">
-                          <strong>₹{course.price.toLocaleString("en-IN")}</strong>
-                          <del>₹{course.oldPrice.toLocaleString("en-IN")}</del>
+                          <strong>
+                            ₹{course.price.toLocaleString("en-IN")}
+                          </strong>
+                          <del>
+                            ₹{course.oldPrice.toLocaleString("en-IN")}
+                          </del>
                         </div>
+
                         <button
                           className="add-course-btn"
                           onClick={() => addToCart(course)}
@@ -707,11 +765,13 @@ function App() {
                 <FaSearch />
                 <h3>No courses found</h3>
                 <p>Try another search term or choose a different category.</p>
+
                 <button
                   className="btn btn-primary"
                   onClick={() => {
                     setSearch("");
                     setActiveCategory("All");
+                    setShowAllCourses(false);
                   }}
                 >
                   Show all courses
@@ -733,20 +793,24 @@ function App() {
           </div>
         </section>
 
+        {/* LEARNING BANNER */}
         <section className="learning-banner">
           <div className="container learning-banner-inner" data-aos="zoom-in">
             <div className="banner-icon"><FaGraduationCap /></div>
+
             <div className="banner-copy">
               <span>YOUR NEXT BIG OPPORTUNITY</span>
               <h2>Small steps today. Big achievements tomorrow.</h2>
               <p>Make learning a habit and move closer to your goals.</p>
             </div>
+
             <a href="#courses" className="btn btn-light">
               Start learning <FaArrowRight />
             </a>
           </div>
         </section>
 
+        {/* ABOUT */}
         <section className="section about-section" id="about">
           <div className="container about-grid">
             <div className="about-visual" data-aos="fade-right">
@@ -757,20 +821,24 @@ function App() {
                   loading="lazy"
                 />
               </div>
+
               <div className="about-experience-card">
                 <FaGraduationCap />
                 <strong>Learning without limits</strong>
                 <span>Skills for every stage of your journey</span>
               </div>
+
               <div className="about-decoration" />
             </div>
 
             <div className="about-copy" data-aos="fade-left">
-              <span className="section-kicker">WHY LEARNHUB?</span>
+              <span className="section-kicker">WHY BRIGHTLEARN?</span>
+
               <h2>
                 Education that moves
                 <span className="text-gradient"> you forward.</span>
               </h2>
+
               <p>
                 We believe learning should be flexible, practical and
                 accessible. BrightLearn brings useful skills and structured
@@ -785,6 +853,7 @@ function App() {
                     <p>Fit learning into your schedule and your life.</p>
                   </div>
                 </div>
+
                 <div className="benefit-item">
                   <span className="benefit-icon"><FaUsers /></span>
                   <div>
@@ -792,6 +861,7 @@ function App() {
                     <p>Build skills through guided, practical lessons.</p>
                   </div>
                 </div>
+
                 <div className="benefit-item">
                   <span className="benefit-icon"><FaCertificate /></span>
                   <div>
@@ -808,12 +878,17 @@ function App() {
           </div>
         </section>
 
+        {/* HOW IT WORKS */}
         <section className="section how-section">
           <div className="container">
             <div className="section-heading centered-heading" data-aos="fade-up">
               <div>
-                <span className="section-kicker">SIMPLE STEPS, REAL PROGRESS</span>
-                <h2>Start learning in <span className="text-gradient">3 steps.</span></h2>
+                <span className="section-kicker">
+                  SIMPLE STEPS, REAL PROGRESS
+                </span>
+                <h2>
+                  Start learning in <span className="text-gradient">3 steps.</span>
+                </h2>
                 <p>Your next skill is closer than you think.</p>
               </div>
             </div>
@@ -825,13 +900,23 @@ function App() {
                 <h3>Explore</h3>
                 <p>Find a course that matches your interests and goals.</p>
               </div>
-              <div className="step-card" data-aos="fade-up" data-aos-delay="120">
+
+              <div
+                className="step-card"
+                data-aos="fade-up"
+                data-aos-delay="120"
+              >
                 <span className="step-number">02</span>
                 <span className="step-icon"><FaPlay /></span>
                 <h3>Learn</h3>
                 <p>Follow lessons, practise new ideas and build projects.</p>
               </div>
-              <div className="step-card" data-aos="fade-up" data-aos-delay="240">
+
+              <div
+                className="step-card"
+                data-aos="fade-up"
+                data-aos-delay="240"
+              >
                 <span className="step-number">03</span>
                 <span className="step-icon"><FaCertificate /></span>
                 <h3>Grow</h3>
@@ -841,36 +926,48 @@ function App() {
           </div>
         </section>
 
+        {/* TESTIMONIALS */}
         <section className="section reviews-section" id="reviews">
           <div className="container reviews-grid">
             <div className="reviews-intro" data-aos="fade-right">
               <span className="section-kicker">LEARNER STORIES</span>
-              <h2>Real growth.<br /><span className="text-gradient">Real confidence.</span></h2>
+
+              <h2>
+                Real growth.
+                <br />
+                <span className="text-gradient">Real confidence.</span>
+              </h2>
+
               <p>
                 Every learning journey is different. Get inspired by people
                 building new skills and exploring new possibilities.
               </p>
+
               <div className="review-score">
                 <strong>4.8</strong>
                 <div>
                   <div className="review-stars">
-                    {[1, 2, 3, 4, 5].map((star) => <FaStar key={star} />)}
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <FaStar key={star} />
+                    ))}
                   </div>
                   <span>Illustrative learner rating</span>
                 </div>
               </div>
+
               <div className="review-controls">
                 <button
                   aria-label="Previous testimonial"
                   onClick={() =>
                     setTestimonialIndex(
                       (testimonialIndex + testimonials.length - 1) %
-                      testimonials.length
+                        testimonials.length
                     )
                   }
                 >
                   ←
                 </button>
+
                 <button
                   aria-label="Next testimonial"
                   onClick={() =>
@@ -886,28 +983,38 @@ function App() {
 
             <article className="testimonial-card" data-aos="fade-left">
               <div className="quote-mark">“</div>
+
               <div className="review-stars">
-                {[1, 2, 3, 4, 5].map((star) => <FaStar key={star} />)}
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <FaStar key={star} />
+                ))}
               </div>
+
               <p className="testimonial-text">
                 {testimonials[testimonialIndex].text}
               </p>
+
               <div className="testimonial-person">
                 <img
                   src={testimonials[testimonialIndex].image}
                   alt={testimonials[testimonialIndex].name}
                 />
+
                 <div>
                   <strong>{testimonials[testimonialIndex].name}</strong>
                   <span>{testimonials[testimonialIndex].role}</span>
                 </div>
+
                 <FaCheckCircle className="verified-icon" />
               </div>
+
               <div className="testimonial-dots">
                 {testimonials.map((item, index) => (
                   <button
                     key={item.name}
-                    className={index === testimonialIndex ? "dot-active" : ""}
+                    className={
+                      index === testimonialIndex ? "dot-active" : ""
+                    }
                     aria-label={`Show testimonial ${index + 1}`}
                     onClick={() => setTestimonialIndex(index)}
                   />
@@ -917,16 +1024,24 @@ function App() {
           </div>
         </section>
 
+        {/* FAQ */}
         <section className="section faq-section" id="faq">
           <div className="container faq-grid">
             <div className="faq-intro" data-aos="fade-right">
               <span className="section-kicker">GOT QUESTIONS?</span>
-              <h2>Good questions.<br /><span className="text-gradient">Clear answers.</span></h2>
+
+              <h2>
+                Good questions.
+                <br />
+                <span className="text-gradient">Clear answers.</span>
+              </h2>
+
               <p>
                 Everything you need to know before starting your learning
                 journey with BrightLearn.
               </p>
-              <a href="#contact" className="text-link">
+
+              <a href="#contact-page" className="text-link">
                 Ask us a question <FaArrowRight />
               </a>
             </div>
@@ -934,7 +1049,9 @@ function App() {
             <div className="faq-list" data-aos="fade-left">
               {faqs.map((faq, index) => (
                 <div
-                  className={`faq-item ${activeFaq === index ? "faq-open" : ""}`}
+                  className={`faq-item ${
+                    activeFaq === index ? "faq-open" : ""
+                  }`}
                   key={faq.question}
                 >
                   <button
@@ -947,6 +1064,7 @@ function App() {
                     <span>{faq.question}</span>
                     <FaChevronDown />
                   </button>
+
                   {activeFaq === index && (
                     <div className="faq-answer">
                       <p>{faq.answer}</p>
@@ -958,15 +1076,24 @@ function App() {
           </div>
         </section>
 
+        {/* NEWSLETTER */}
         <section className="newsletter-section" id="newsletter">
           <div className="container">
             <div className="newsletter-card" data-aos="zoom-in">
               <div className="newsletter-decoration" />
+
               <div className="newsletter-copy">
-                <span className="section-kicker">A LITTLE INSPIRATION, REGULARLY</span>
-                <h2>Make room for <span className="text-gradient">growth.</span></h2>
+                <span className="section-kicker">
+                  A LITTLE INSPIRATION, REGULARLY
+                </span>
+
+                <h2>
+                  Make room for <span className="text-gradient">growth.</span>
+                </h2>
+
                 <p>
-                  Get learning tips, course highlights and fresh ideas in your inbox.
+                  Get learning tips, course highlights and fresh ideas in
+                  your inbox.
                 </p>
               </div>
 
@@ -975,7 +1102,9 @@ function App() {
                   <FaCheckCircle />
                   <div>
                     <strong>Thanks for subscribing!</strong>
-                    <span>This demo shows the subscription confirmation.</span>
+                    <span>
+                      This demo shows the subscription confirmation.
+                    </span>
                   </div>
                 </div>
               ) : (
@@ -991,35 +1120,312 @@ function App() {
                       aria-label="Email address"
                     />
                   </div>
+
                   <button type="submit" className="btn btn-primary">
                     Subscribe <FaPaperPlane />
                   </button>
+
                   <small>No spam. Just useful learning inspiration.</small>
                 </form>
               )}
             </div>
           </div>
         </section>
+
+        {/* CONTACT PAGE */}
+        <section className="section contact-section" id="contact-page">
+          <div className="container">
+            <div className="contact-heading" data-aos="fade-up">
+              <span className="section-kicker">LET'S CONNECT</span>
+
+              <h2>
+                Have a question?
+                <br />
+                <span className="text-gradient">
+                  We'd love to hear from you.
+                </span>
+              </h2>
+
+              <p>
+                Need help choosing a course or have a question about
+                BrightLearn? Send us a message and let us know how we can help.
+              </p>
+            </div>
+
+            <div className="contact-grid">
+              {/* CONTACT DETAILS */}
+              <div className="contact-info-card" data-aos="fade-right">
+                <span className="contact-label">CONTACT INFORMATION</span>
+
+                <h3>Let's start a conversation.</h3>
+
+                <p className="contact-info-description">
+                  We're here to help you take the next step in your learning
+                  journey. Reach out using any of the details below.
+                </p>
+
+                <div className="contact-info-item">
+                  <span className="contact-info-icon">
+                    <FaEnvelope />
+                  </span>
+                  <div>
+                    <strong>Email us</strong>
+                    <a href="mailto:uk556513@gmail.com">
+                      uk556513@gmail.com
+                    </a>
+                  </div>
+                </div>
+
+                <div className="contact-info-item">
+                  <span className="contact-info-icon">
+                    <FaPhone />
+                  </span>
+                  <div>
+                    <strong>Call us</strong>
+                    <a href="tel:+919342568375">+91 93425 68375</a>
+                  </div>
+                </div>
+
+                <div className="contact-info-item">
+                  <span className="contact-info-icon">
+                    <FaMapMarkerAlt />
+                  </span>
+                  <div>
+                    <strong>Our location</strong>
+                    <span>HSR Layout, Bengaluru, India</span>
+                  </div>
+                </div>
+
+                <div className="contact-info-item">
+                  <span className="contact-info-icon">
+                    <FaClock />
+                  </span>
+                  <div>
+                    <strong>Working hours</strong>
+                    <span>Monday – Saturday</span>
+                    <small>9:00 AM – 6:00 PM</small>
+                  </div>
+                </div>
+
+                <div className="contact-social-area">
+                  <strong>Follow BrightLearn</strong>
+
+                  <div className="contact-social-links">
+                    <a
+                      href="https://facebook.com"
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label="Facebook"
+                    >
+                      <FaFacebookF />
+                    </a>
+
+                    <a
+                      href="https://instagram.com"
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label="Instagram"
+                    >
+                      <FaInstagram />
+                    </a>
+
+                    <a
+                      href="https://linkedin.com"
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label="LinkedIn"
+                    >
+                      <FaLinkedinIn />
+                    </a>
+
+                    <a
+                      href="https://youtube.com"
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label="YouTube"
+                    >
+                      <FaYoutube />
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* CONTACT FORM */}
+              <div className="contact-form-card" data-aos="fade-left">
+                <span className="section-kicker">SEND US A MESSAGE</span>
+
+                <h3>How can we help you?</h3>
+
+                <p className="contact-form-description">
+                  Fill in the details below to get in touch with our team.
+                </p>
+
+                {contactSubmitted ? (
+                  <div className="contact-success">
+                    <span className="contact-success-icon">
+                      <FaCheckCircle />
+                    </span>
+
+                    <h3>Thank you for reaching out!</h3>
+
+                    <p>
+                      Your form has been submitted in this demo. To actually
+                      deliver messages, connect this form to a backend or an
+                      email service.
+                    </p>
+
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      onClick={() => setContactSubmitted(false)}
+                    >
+                      Send another message <FaArrowRight />
+                    </button>
+                  </div>
+                ) : (
+                  <form
+                    className="contact-form"
+                    onSubmit={handleContactSubmit}
+                  >
+                    <div className="contact-form-row">
+                      <div className="contact-field">
+                        <label htmlFor="contact-name">Full name *</label>
+
+                        <input
+                          id="contact-name"
+                          type="text"
+                          placeholder="Enter your full name"
+                          value={contactForm.name}
+                          onChange={(event) =>
+                            setContactForm({
+                              ...contactForm,
+                              name: event.target.value,
+                            })
+                          }
+                          required
+                        />
+                      </div>
+
+                      <div className="contact-field">
+                        <label htmlFor="contact-email">
+                          Email address *
+                        </label>
+
+                        <input
+                          id="contact-email"
+                          type="email"
+                          placeholder="Enter your email"
+                          value={contactForm.email}
+                          onChange={(event) =>
+                            setContactForm({
+                              ...contactForm,
+                              email: event.target.value,
+                            })
+                          }
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div className="contact-field">
+                      <label htmlFor="contact-subject">Subject *</label>
+
+                      <select
+                        id="contact-subject"
+                        value={contactForm.subject}
+                        onChange={(event) =>
+                          setContactForm({
+                            ...contactForm,
+                            subject: event.target.value,
+                          })
+                        }
+                        required
+                      >
+                        <option value="">Select a subject</option>
+                        <option value="Course Information">
+                          Course Information
+                        </option>
+                        <option value="Technical Support">
+                          Technical Support
+                        </option>
+                        <option value="Payment Enquiry">
+                          Payment Enquiry
+                        </option>
+                        <option value="Partnership">Partnership</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </div>
+
+                    <div className="contact-field">
+                      <label htmlFor="contact-message">Your message *</label>
+
+                      <textarea
+                        id="contact-message"
+                        rows="6"
+                        placeholder="Tell us how we can help..."
+                        value={contactForm.message}
+                        onChange={(event) =>
+                          setContactForm({
+                            ...contactForm,
+                            message: event.target.value,
+                          })
+                        }
+                        required
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="btn btn-primary contact-submit-btn"
+                    >
+                      Send Message <FaPaperPlane />
+                    </button>
+
+                    <small className="contact-privacy-note">
+                      <FaCheckCircle />
+                      Please provide a valid email address.
+                    </small>
+                  </form>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
 
+      {/* FOOTER */}
       <footer className="site-footer" id="contact">
         <div className="container footer-main">
           <div className="footer-brand-column">
             <a className="brand footer-brand" href="#home">
-              <span className="brand-icon"><FaGraduationCap /></span>
-              <span>Bright<span className="text-gradient">Learn</span>
+              <span className="brand-icon">
+                <FaGraduationCap />
+              </span>
+
+              <span>
+                Bright<span className="text-gradient">Learn</span>
                 <small>LEARN SOMETHING NEW</small>
               </span>
             </a>
+
             <p>
               Good learning opens new doors. Discover useful skills, explore
               your interests and take the next step with BrightLearn.
             </p>
+
             <div className="footer-socials">
-              <a href="https://facebook.com" aria-label="Facebook"><FaFacebookF /></a>
-              <a href="https://instagram.com" aria-label="Instagram"><FaInstagram /></a>
-              <a href="https://linkedin.com" aria-label="LinkedIn"><FaLinkedinIn /></a>
-              <a href="https://youtube.com" aria-label="YouTube"><FaYoutube /></a>
+              <a href="https://facebook.com" aria-label="Facebook">
+                <FaFacebookF />
+              </a>
+              <a href="https://instagram.com" aria-label="Instagram">
+                <FaInstagram />
+              </a>
+              <a href="https://linkedin.com" aria-label="LinkedIn">
+                <FaLinkedinIn />
+              </a>
+              <a href="https://youtube.com" aria-label="YouTube">
+                <FaYoutube />
+              </a>
             </div>
           </div>
 
@@ -1034,29 +1440,60 @@ function App() {
 
           <div className="footer-column">
             <h4>Popular topics</h4>
-            <a href="#courses" onClick={() => setActiveCategory("Development")}>Web development</a>
-            <a href="#courses" onClick={() => setActiveCategory("Data Science")}>Data science</a>
-            <a href="#courses" onClick={() => setActiveCategory("Design")}>UI/UX design</a>
-            <a href="#courses" onClick={() => setActiveCategory("Business")}>Business</a>
-            <a href="#courses" onClick={() => setActiveCategory("Marketing")}>Marketing</a>
+            <a
+              href="#courses"
+              onClick={() => setActiveCategory("Development")}
+            >
+              Web development
+            </a>
+            <a
+              href="#courses"
+              onClick={() => setActiveCategory("Data Science")}
+            >
+              Data science
+            </a>
+            <a href="#courses" onClick={() => setActiveCategory("Design")}>
+              UI/UX design
+            </a>
+            <a href="#courses" onClick={() => setActiveCategory("Business")}>
+              Business
+            </a>
+            <a href="#courses" onClick={() => setActiveCategory("Marketing")}>
+              Marketing
+            </a>
           </div>
 
           <div className="footer-column footer-contact">
             <h4>Get in touch</h4>
-            <a href="mailto:uk556513@gmail.com"><FaEnvelope /> uk556513@gmail.com</a>
-            <a href="tel:+919342568375"><FaPhone /> +91 93425 68375</a>
-            <span><FaMapMarkerAlt /> Hsr Layout Bengaluru</span>
+
+            <a href="mailto:uk556513@gmail.com">
+              <FaEnvelope /> uk556513@gmail.com
+            </a>
+
+            <a href="tel:+919342568375">
+              <FaPhone /> +91 93425 68375
+            </a>
+
+            <span>
+              <FaMapMarkerAlt /> HSR Layout Bengaluru
+            </span>
+
             <a href="#faq">Help & FAQs</a>
+            <a href="#contact-page">Contact form</a>
           </div>
         </div>
 
         <div className="container footer-bottom">
-          <p>© {new Date().getFullYear()} BrightLearn. All rights reserved.</p>
+          <p>
+            © {new Date().getFullYear()} BrightLearn. All rights reserved.
+          </p>
+
           <div>
             <a href="#faq">Help Center</a>
-            <a href="#contact">Contact</a>
+            <a href="#contact-page">Contact</a>
             <a href="#home">Back to top ↑</a>
           </div>
+
           <span>Learn · Build · Grow</span>
         </div>
       </footer>
