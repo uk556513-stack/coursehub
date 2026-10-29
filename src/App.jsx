@@ -2,6 +2,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import "./style.css";
+
 import {
   FaGraduationCap,
   FaSearch,
@@ -18,7 +20,6 @@ import {
   FaCheckCircle,
   FaClock,
   FaUsers,
-  FaInfinity,
   FaCertificate,
   FaArrowRight,
   FaEnvelope,
@@ -29,11 +30,24 @@ import {
   FaLinkedinIn,
   FaYoutube,
   FaChevronDown,
-  FaLaptopCode,
   FaRegHeart,
   FaPaperPlane,
+  FaInfinity,
 } from "react-icons/fa";
-import "./style.css";
+
+import reactCourse from "./assets/react-course.jpg";
+import pythonCourse from "./assets/python-course.jpg";
+import dataCourse from "./assets/data-course.jpg";
+import designCourse from "./assets/design-course.jpg";
+import marketingCourse from "./assets/marketing-course.jpg";
+import businessCourse from "./assets/business-course.jpg";
+import photographyCourse from "./assets/photography-course.jpg";
+import advancedReact from "./assets/advanced-react.jpg";
+import studentsImage from "./assets/students.jpg";
+import learningImage from "./assets/learning.jpg";
+import nivithaImage from "./assets/nivitha.jpg";
+import udayImage from "./assets/uday.jpg";
+import meeraImage from "./assets/meera.jpg";
 
 const categories = [
   { name: "Development", icon: <FaCode />, count: "1,240+ courses" },
@@ -57,9 +71,8 @@ const courses = [
     oldPrice: 2499,
     duration: "24 hours",
     level: "Beginner",
-    image: "https://i.pinimg.com/736x/99/b3/f3/99b3f36de5cd3a669b4c4f72fc940783.jpg",
+    image: reactCourse,
     badge: "Bestseller",
-    color: "blue",
   },
   {
     id: 2,
@@ -73,9 +86,8 @@ const courses = [
     oldPrice: 2199,
     duration: "18 hours",
     level: "Beginner",
-    image: "https://i.pinimg.com/736x/2b/0d/4d/2b0d4d78685a644953702214c497d81c.jpg",
+    image: pythonCourse,
     badge: "Popular",
-    color: "yellow",
   },
   {
     id: 3,
@@ -89,9 +101,8 @@ const courses = [
     oldPrice: 2999,
     duration: "32 hours",
     level: "Intermediate",
-    image: "https://i.pinimg.com/736x/e3/12/c8/e312c8b957c995cc9c304aeaf2e87374.jpg",
+    image: dataCourse,
     badge: "Trending",
-    color: "blue",
   },
   {
     id: 4,
@@ -105,9 +116,8 @@ const courses = [
     oldPrice: 2499,
     duration: "16 hours",
     level: "Beginner",
-    image: "https://i.pinimg.com/736x/8e/36/7f/8e367fdcb3518e292acc883c0aca1070.jpg",
+    image: designCourse,
     badge: "New",
-    color: "pink",
   },
   {
     id: 5,
@@ -121,9 +131,8 @@ const courses = [
     oldPrice: 1899,
     duration: "12 hours",
     level: "Beginner",
-    image: "https://i.pinimg.com/736x/87/c6/cb/87c6cb07e95350f5ed2288fd05b50211.jpg",
+    image: marketingCourse,
     badge: "Popular",
-    color: "blue",
   },
   {
     id: 6,
@@ -137,9 +146,8 @@ const courses = [
     oldPrice: 1999,
     duration: "14 hours",
     level: "All levels",
-    image: "https://i.pinimg.com/1200x/0d/98/9e/0d989ec15e5eabe357d327034c059ca0.jpg",
+    image: businessCourse,
     badge: "Featured",
-    color: "skyblue",
   },
   {
     id: 7,
@@ -153,9 +161,8 @@ const courses = [
     oldPrice: 1799,
     duration: "10 hours",
     level: "Beginner",
-    image: "https://i.pinimg.com/1200x/88/59/be/8859be10f7284dc3a8466ce90484572d.jpg",
+    image: photographyCourse,
     badge: "New",
-    color: "yellow",
   },
   {
     id: 8,
@@ -169,9 +176,8 @@ const courses = [
     oldPrice: 3299,
     duration: "28 hours",
     level: "Advanced",
-    image: "https://i.pinimg.com/736x/78/fd/6d/78fd6dd13904b38d57af1c6721b6e6ce.jpg",
+    image: advancedReact,
     badge: "Bestseller",
-    color: "blue",
   },
 ];
 
@@ -179,20 +185,20 @@ const testimonials = [
   {
     name: "Nivitha",
     role: "Frontend Developer",
-    image: "https://i.pinimg.com/736x/0a/d1/93/0ad19309a59be71b028548801ac38353.jpg",
-    text: "BrightLearn helped me learn React from scratch. The practical projects gave me the confidence to build my own portfolio and apply for developer jobs.",
+    image: nivithaImage,
+    text: "BrightLearn helped me learn React from scratch. Practical projects gave me the confidence to build my own portfolio.",
   },
   {
     name: "Uday",
     role: "Data Analyst",
-    image: "https://i.pinimg.com/736x/e9/c5/1a/e9c51a0a6819c3b0032b44c46fd199b0.jpg",
-    text: "The Python and data science courses made difficult topics easier to understand. I can learn at my own pace whenever I have free time.",
+    image: udayImage,
+    text: "The Python and data science courses made difficult topics easier to understand. I can learn at my own pace.",
   },
   {
     name: "Meera",
     role: "UI/UX Designer",
-    image: "https://i.pinimg.com/1200x/1f/15/70/1f1570ded07a4d4fea0d9b28dffbc037.jpg",
-    text: "The design courses have excellent explanations and useful assignments. I have improved my design skills and created stronger projects.",
+    image: meeraImage,
+    text: "The design courses have useful assignments. I have improved my design skills and created stronger projects.",
   },
 ];
 
@@ -200,27 +206,27 @@ const faqs = [
   {
     question: "What is BrightLearn?",
     answer:
-      "BrightLearn is an online learning platform where you can explore courses in web development, design, business, data science and more.",
+      "BrightLearn is an online learning platform where you can explore courses in development, design, business and data science.",
   },
   {
     question: "Can I learn at my own pace?",
     answer:
-      "Yes. Learn at a time that suits you, revisit lessons and practise the skills you learn. Course access depends on the course terms.",
+      "Yes. You can learn at a time that suits you and practise the skills you learn.",
   },
   {
     question: "Do I receive a certificate?",
     answer:
-      "The platform is designed to support course completion certificates. Actual certificate issuing should be connected to your course and completion system.",
+      "Certificates can be provided when a course completion system is connected to the platform.",
   },
   {
     question: "Do I need previous experience?",
     answer:
-      "No. You can start with beginner-friendly courses and progress to intermediate and advanced topics as your skills improve.",
+      "No. You can start with beginner courses and move to more advanced topics as your skills improve.",
   },
   {
     question: "How can I access my courses?",
     answer:
-      "This frontend demo lets you explore courses. Real student accounts, payments and saved course progress require a backend integration.",
+      "You can explore courses in this frontend demo. Student accounts and course progress need backend integration.",
   },
 ];
 
@@ -239,34 +245,33 @@ function App() {
   const [notice, setNotice] = useState("");
   const [showAllCourses, setShowAllCourses] = useState(false);
 
-  // Contact form states
   const [contactForm, setContactForm] = useState({
     name: "",
     email: "",
     subject: "",
     message: "",
   });
+
   const [contactSubmitted, setContactSubmitted] = useState(false);
 
   useEffect(() => {
     AOS.init({
-      duration: 850,
+      duration: 700,
       once: true,
-      offset: 65,
-      easing: "ease-out-cubic",
+      offset: 50,
     });
 
-    let value = 0;
-
     const timer = setInterval(() => {
-      value += 4;
-      setProgress(Math.min(value, 100));
+      setProgress((current) => {
+        if (current >= 100) {
+          clearInterval(timer);
+          setTimeout(() => setLoading(false), 250);
+          return 100;
+        }
 
-      if (value >= 100) {
-        clearInterval(timer);
-        setTimeout(() => setLoading(false), 350);
-      }
-    }, 65);
+        return Math.min(current + 10, 100);
+      });
+    }, 45);
 
     return () => clearInterval(timer);
   }, []);
@@ -285,7 +290,6 @@ function App() {
         activeCategory === "All" || course.category === activeCategory;
 
       const matchesSearch =
-        !term ||
         course.title.toLowerCase().includes(term) ||
         course.category.toLowerCase().includes(term) ||
         course.instructor.toLowerCase().includes(term);
@@ -300,7 +304,7 @@ function App() {
 
   const showNotice = (message) => {
     setNotice(message);
-    window.setTimeout(() => setNotice(""), 2600);
+    setTimeout(() => setNotice(""), 2500);
   };
 
   const toggleFavorite = (id) => {
@@ -312,35 +316,24 @@ function App() {
   };
 
   const addToCart = (course) => {
-    setCart((current) =>
-      current.some((item) => item.id === course.id)
-        ? current
-        : [...current, course]
-    );
+    if (cart.some((item) => item.id === course.id)) {
+      showNotice("This course is already in your cart.");
+      return;
+    }
 
-    showNotice(`${course.title} added to your learning cart!`);
+    setCart((current) => [...current, course]);
+    showNotice("Course added to your cart.");
   };
 
   const handleSubscribe = (event) => {
     event.preventDefault();
-
-    if (!email.trim()) return;
-
     setSubscribed(true);
     setEmail("");
   };
 
   const handleContactSubmit = (event) => {
     event.preventDefault();
-
     setContactSubmitted(true);
-
-    setContactForm({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
   };
 
   const closeMenu = () => setMenuOpen(false);
@@ -348,28 +341,20 @@ function App() {
   if (loading) {
     return (
       <div className="loading-screen">
-        <div className="loader-orb orb-one" />
-        <div className="loader-orb orb-two" />
-
         <div className="loader-content">
           <div className="loader-logo">
-            <span className="logo-icon">
-              <FaGraduationCap />
-            </span>
+            <FaGraduationCap />
             <span>
               Bright<span className="text-gradient">Learn</span>
             </span>
           </div>
 
-          <div className="loader-ring">
-            <FaLaptopCode />
+          <div className="loader-icon">
+            <FaLaptopCodeFallback />
           </div>
 
-          <p className="loader-tagline">LEARN · BUILD · GROW</p>
-          <h2>Loading your future...</h2>
-          <p className="loader-description">
-            Preparing your learning experience
-          </p>
+          <h2>Getting things ready...</h2>
+          <p>Preparing your learning page</p>
 
           <div className="progress-track">
             <div
@@ -379,12 +364,10 @@ function App() {
           </div>
 
           <div className="progress-meta">
-            <span>PLEASE WAIT</span>
+            <span>Please wait</span>
             <strong>{progress}%</strong>
           </div>
         </div>
-
-        <div className="loader-bottom">YOUR JOURNEY STARTS HERE</div>
       </div>
     );
   }
@@ -394,20 +377,16 @@ function App() {
       {notice && <div className="toast-message">{notice}</div>}
 
       <div className="announcement-bar">
-        <span className="announcement-icon">✦</span>
-        Unlock your potential — discover your next skill today!
+        Learn something new and take the next step.
         <a href="#courses">
           Explore courses <FaArrowRight />
         </a>
       </div>
 
-      {/* NAVBAR */}
       <header className="site-header">
         <nav className="navbar container">
           <a className="brand" href="#home" onClick={closeMenu}>
-            <span className="brand-icon">
-              <FaGraduationCap />
-            </span>
+            <span className="brand-icon"><FaGraduationCap /></span>
             <span>
               Bright<span className="text-gradient">Learn</span>
               <small>LEARN SOMETHING NEW</small>
@@ -416,48 +395,44 @@ function App() {
 
           <button
             className="mobile-toggle"
-            aria-label="Toggle navigation"
             onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle navigation"
           >
             {menuOpen ? <FaTimes /> : <FaBars />}
           </button>
 
           <div className={`nav-menu ${menuOpen ? "nav-menu-open" : ""}`}>
-            <a href="#home" onClick={closeMenu}>Home</a>
-            <a href="#categories" onClick={closeMenu}>Categories</a>
-            <a href="#courses" onClick={closeMenu}>Courses</a>
-            <a href="#about" onClick={closeMenu}>About</a>
-            <a href="#reviews" onClick={closeMenu}>Reviews</a>
-            <a href="#contact-page" onClick={closeMenu}>Contact</a>
+            {[
+              ["Home", "#home"],
+              ["Categories", "#categories"],
+              ["Courses", "#courses"],
+              ["About", "#about"],
+              ["Reviews", "#reviews"],
+              ["Contact", "#contact-page"],
+            ].map(([label, link]) => (
+              <a href={link} key={label} onClick={closeMenu}>
+                {label}
+              </a>
+            ))}
           </div>
 
           <div className="nav-actions">
             <a className="nav-login" href="#newsletter">Log in</a>
-
             <a className="btn btn-primary nav-signup" href="#newsletter">
               Sign Up <FaArrowRight />
             </a>
-
-            <a className="cart-link" href="#courses" aria-label="Learning cart">
-              <span><FaGraduationCap /></span>
-              <b>{cart.length}</b>
+            <a className="cart-link" href="#courses" aria-label="Course cart">
+              <FaGraduationCap /> <b>{cart.length}</b>
             </a>
           </div>
         </nav>
       </header>
 
       <main>
-        {/* HERO */}
         <section className="hero-section" id="home">
-          <div className="hero-glow hero-glow-one" />
-          <div className="hero-glow hero-glow-two" />
-
           <div className="container hero-grid">
             <div className="hero-copy" data-aos="fade-up">
-              <div className="eyebrow">
-                <span className="eyebrow-dot" />
-                YOUR NEXT CHAPTER STARTS HERE
-              </div>
+              <span className="eyebrow">YOUR LEARNING JOURNEY STARTS HERE</span>
 
               <h1>
                 Learn New Skills.
@@ -466,8 +441,8 @@ function App() {
               </h1>
 
               <p className="hero-description">
-                Discover expert-led online courses, gain practical skills
-                and take the next step toward your goals — anytime, anywhere.
+                Explore online courses, learn practical skills and work
+                towards your goals at your own pace.
               </p>
 
               <form
@@ -480,175 +455,107 @@ function App() {
                 }}
               >
                 <FaSearch />
-
                 <input
                   type="search"
                   placeholder="What do you want to learn?"
                   value={search}
                   onChange={(event) => setSearch(event.target.value)}
-                  aria-label="Search courses"
                 />
-
                 <button className="btn btn-primary" type="submit">
                   Search
                 </button>
               </form>
 
               <div className="hero-tags">
-                <span><FaCheckCircle /> Expert instructors</span>
                 <span><FaCheckCircle /> Learn at your pace</span>
-                <span><FaCheckCircle /> Practical skills</span>
+                <span><FaCheckCircle /> Practical courses</span>
+                <span><FaCheckCircle /> Flexible learning</span>
               </div>
 
               <div className="hero-stats">
-                <div>
-                  <strong>10K<span>+</span></strong>
-                  <small>Online courses</small>
-                </div>
-                <div>
-                  <strong>5M<span>+</span></strong>
-                  <small>Happy learners</small>
-                </div>
-                <div>
-                  <strong>4.8<span>/5</span></strong>
-                  <small>Average rating</small>
-                </div>
+                <div><strong>10K+</strong><small>Courses</small></div>
+                <div><strong>5M+</strong><small>Learners</small></div>
+                <div><strong>4.8/5</strong><small>Rating</small></div>
               </div>
             </div>
 
-            <div
-              className="hero-visual"
-              data-aos="fade-left"
-              data-aos-delay="180"
-            >
-              <div className="visual-decoration visual-decoration-one" />
-              <div className="visual-decoration visual-decoration-two" />
-
-              <div className="floating-card floating-card-top">
-                <span className="float-icon purple"><FaPlay /></span>
-                <div>
-                  <strong>Learn anywhere</strong>
-                  <small>Your schedule, your rules</small>
-                </div>
+            <div className="hero-visual" data-aos="fade-left">
+              <div className="hero-image-wrap">
+                <img src={studentsImage} alt="Students learning together" />
               </div>
 
-              <div className="hero-image-wrap">
-                <img
-                  src="https://i.pinimg.com/736x/6d/c8/d4/6dc8d469422de802812fe40a05c48ab7.jpg"
-                  alt="Students learning together"
-                />
-                <div className="image-gradient" />
-
-                <div className="hero-image-caption">
-                  <span className="live-dot" />
-                  <div>
-                    <strong>Your future is in your hands</strong>
-                    <small>Start learning something amazing</small>
-                  </div>
+              <div className="floating-card floating-card-top">
+                <FaPlay />
+                <div>
+                  <strong>Learn anywhere</strong>
+                  <small>At your own pace</small>
                 </div>
               </div>
 
               <div className="floating-card floating-card-bottom">
                 <div className="mini-avatars">
-                  <img src={testimonials[0].image} alt="" />
-                  <img src={testimonials[1].image} alt="" />
-                  <img src={testimonials[2].image} alt="" />
+                  <img src={nivithaImage} alt="" />
+                  <img src={udayImage} alt="" />
+                  <img src={meeraImage} alt="" />
                 </div>
                 <div>
-                  <strong>Join 5M+ learners</strong>
-                  <small>Growing together every day</small>
+                  <strong>Keep learning</strong>
+                  <small>One step at a time</small>
                 </div>
               </div>
-
-              <div className="floating-rating">
-                <FaStar />
-                <strong>4.8/5</strong>
-                <small>Learner rating</small>
-              </div>
-            </div>
-          </div>
-
-          <div className="container trusted-row" data-aos="fade-up">
-            <p>SKILLS FOR TOMORROW'S CAREERS</p>
-
-            <div className="trusted-brands">
-              <span><FaCode /> DEV SKILLS</span>
-              <span><FaChartLine /> DATA LAB</span>
-              <span><FaPalette /> DESIGN STUDIO</span>
-              <span><FaBriefcase /> BUSINESS PRO</span>
             </div>
           </div>
         </section>
 
-        {/* CATEGORIES */}
         <section className="section categories-section" id="categories">
           <div className="container">
             <div className="section-heading" data-aos="fade-up">
               <div>
-                <span className="section-kicker">EXPLORE YOUR INTERESTS</span>
-                <h2>
-                  Find your next <span className="text-gradient">passion.</span>
-                </h2>
-                <p>Explore subjects that move your career forward.</p>
+                <span className="section-kicker">EXPLORE CATEGORIES</span>
+                <h2>Find a subject you enjoy.</h2>
+                <p>Choose an area and find a course to get started.</p>
               </div>
-
               <a href="#courses" className="text-link">
                 Browse courses <FaArrowRight />
               </a>
             </div>
 
             <div className="category-grid">
-              {categories.map((category, index) => (
+              {categories.map((category) => (
                 <button
                   key={category.name}
                   className={`category-card ${
                     activeCategory === category.name ? "category-active" : ""
                   }`}
                   onClick={() => {
-                    setActiveCategory(
-                      activeCategory === category.name
-                        ? "All"
-                        : category.name
-                    );
+                    setActiveCategory(category.name);
                     setShowAllCourses(true);
                     document.getElementById("courses")?.scrollIntoView({
                       behavior: "smooth",
                     });
                   }}
-                  data-aos="fade-up"
-                  data-aos-delay={index * 70}
                 >
-                  <span className={`category-icon category-icon-${index + 1}`}>
-                    {category.icon}
-                  </span>
-
+                  <span className="category-icon">{category.icon}</span>
                   <strong>{category.name}</strong>
                   <small>{category.count}</small>
-
-                  <span className="category-arrow">
-                    <FaArrowRight />
-                  </span>
+                  <FaArrowRight />
                 </button>
               ))}
             </div>
           </div>
         </section>
 
-        {/* COURSES */}
         <section className="section courses-section" id="courses">
           <div className="container">
             <div className="section-heading" data-aos="fade-up">
               <div>
-                <span className="section-kicker">LEARN SOMETHING AMAZING</span>
-                <h2>
-                  Popular <span className="text-gradient">courses.</span>
-                </h2>
-                <p>Handpicked learning experiences to help you grow.</p>
+                <span className="section-kicker">POPULAR COURSES</span>
+                <h2>Learn something useful.</h2>
+                <p>Explore courses and choose what you want to learn next.</p>
               </div>
-              <div className="course-heading-side" />
             </div>
 
-            <div className="course-controls" data-aos="fade-up">
+            <div className="course-controls">
               <div className="filter-list">
                 {["All", ...categories.map((item) => item.name)].map((item) => (
                   <button
@@ -670,47 +577,29 @@ function App() {
                 <FaSearch />
                 <input
                   type="search"
+                  placeholder="Search courses..."
                   value={search}
                   onChange={(event) => setSearch(event.target.value)}
-                  placeholder="Search courses..."
-                  aria-label="Filter courses"
                 />
               </label>
             </div>
 
             {visibleCourses.length > 0 ? (
               <div className="course-grid">
-                {visibleCourses.map((course, index) => (
-                  <article
-                    className="course-card"
-                    key={course.id}
-                    data-aos="fade-up"
-                    data-aos-delay={(index % 4) * 80}
-                  >
+                {visibleCourses.map((course) => (
+                  <article className="course-card" key={course.id}>
                     <div className="course-image">
-                      <img
-                        src={course.image}
-                        alt={course.title}
-                        loading="lazy"
-                      />
-
-                      <span className={`course-badge badge-${course.color}`}>
-                        {course.badge}
-                      </span>
-
+                      <img src={course.image} alt={course.title} loading="lazy" />
+                      <span className="course-badge">{course.badge}</span>
                       <button
                         className={`favorite-btn ${
                           favorites.includes(course.id) ? "favorite-active" : ""
                         }`}
-                        aria-label="Add to favorites"
                         onClick={() => toggleFavorite(course.id)}
+                        aria-label="Toggle favorite"
                       >
                         <FaRegHeart />
                       </button>
-
-                      <span className="course-image-overlay">
-                        <FaPlay /> Explore course
-                      </span>
                     </div>
 
                     <div className="course-content">
@@ -720,10 +609,7 @@ function App() {
                       </div>
 
                       <h3>{course.title}</h3>
-
-                      <p className="instructor">
-                        Instructor: {course.instructor}
-                      </p>
+                      <p className="instructor">Instructor: {course.instructor}</p>
 
                       <div className="course-rating">
                         <strong>{course.rating}</strong>
@@ -738,21 +624,16 @@ function App() {
 
                       <div className="course-bottom">
                         <div className="course-price">
-                          <strong>
-                            ₹{course.price.toLocaleString("en-IN")}
-                          </strong>
-                          <del>
-                            ₹{course.oldPrice.toLocaleString("en-IN")}
-                          </del>
+                          <strong>₹{course.price.toLocaleString("en-IN")}</strong>
+                          <del>₹{course.oldPrice.toLocaleString("en-IN")}</del>
                         </div>
 
                         <button
                           className="add-course-btn"
                           onClick={() => addToCart(course)}
-                          aria-label={`Add ${course.title} to cart`}
                         >
                           {cart.some((item) => item.id === course.id)
-                            ? "Added ✓"
+                            ? "Added"
                             : "Add course"}
                         </button>
                       </div>
@@ -764,8 +645,7 @@ function App() {
               <div className="empty-state">
                 <FaSearch />
                 <h3>No courses found</h3>
-                <p>Try another search term or choose a different category.</p>
-
+                <p>Try another search or category.</p>
                 <button
                   className="btn btn-primary"
                   onClick={() => {
@@ -780,12 +660,12 @@ function App() {
             )}
 
             {filteredCourses.length > 4 && (
-              <div className="center-action" data-aos="fade-up">
+              <div className="center-action">
                 <button
                   className="btn btn-outline"
                   onClick={() => setShowAllCourses(!showAllCourses)}
                 >
-                  {showAllCourses ? "Show fewer courses" : "Explore all courses"}
+                  {showAllCourses ? "Show fewer courses" : "View all courses"}
                   <FaArrowRight />
                 </button>
               </div>
@@ -793,154 +673,114 @@ function App() {
           </div>
         </section>
 
-        {/* LEARNING BANNER */}
         <section className="learning-banner">
-          <div className="container learning-banner-inner" data-aos="zoom-in">
-            <div className="banner-icon"><FaGraduationCap /></div>
-
+          <div className="container learning-banner-inner">
+            <FaGraduationCap className="banner-icon" />
             <div className="banner-copy">
-              <span>YOUR NEXT BIG OPPORTUNITY</span>
-              <h2>Small steps today. Big achievements tomorrow.</h2>
-              <p>Make learning a habit and move closer to your goals.</p>
+              <span>KEEP MOVING FORWARD</span>
+              <h2>Small steps can lead to big achievements.</h2>
+              <p>Choose a course and make time to learn something new.</p>
             </div>
-
             <a href="#courses" className="btn btn-light">
               Start learning <FaArrowRight />
             </a>
           </div>
         </section>
 
-        {/* ABOUT */}
         <section className="section about-section" id="about">
           <div className="container about-grid">
             <div className="about-visual" data-aos="fade-right">
               <div className="about-image-main">
-                <img
-                  src="https://i.pinimg.com/1200x/28/5a/31/285a31ee0fbd58dcc2e7b7ad99c0fdf7.jpg"
-                  alt="Online learning and collaboration"
-                  loading="lazy"
-                />
+                <img src={learningImage} alt="Online learning" loading="lazy" />
               </div>
-
               <div className="about-experience-card">
                 <FaGraduationCap />
                 <strong>Learning without limits</strong>
-                <span>Skills for every stage of your journey</span>
+                <span>Build skills at your own pace</span>
               </div>
-
-              <div className="about-decoration" />
             </div>
 
             <div className="about-copy" data-aos="fade-left">
-              <span className="section-kicker">WHY BRIGHTLEARN?</span>
-
-              <h2>
-                Education that moves
-                <span className="text-gradient"> you forward.</span>
-              </h2>
-
+              <span className="section-kicker">ABOUT BRIGHTLEARN</span>
+              <h2>Learn today. Use your skills tomorrow.</h2>
               <p>
-                We believe learning should be flexible, practical and
-                accessible. BrightLearn brings useful skills and structured
-                lessons together to help you take your next step.
+                BrightLearn helps learners explore different subjects and
+                develop practical skills. Start with the basics and continue
+                learning as your interests grow.
               </p>
 
               <div className="benefit-list">
                 <div className="benefit-item">
                   <span className="benefit-icon"><FaInfinity /></span>
                   <div>
-                    <strong>Learn at your own pace</strong>
-                    <p>Fit learning into your schedule and your life.</p>
+                    <strong>Flexible learning</strong>
+                    <p>Learn at a time that suits you.</p>
                   </div>
                 </div>
-
                 <div className="benefit-item">
                   <span className="benefit-icon"><FaUsers /></span>
                   <div>
-                    <strong>Industry-focused instructors</strong>
-                    <p>Build skills through guided, practical lessons.</p>
+                    <strong>Useful lessons</strong>
+                    <p>Practise what you learn through projects.</p>
                   </div>
                 </div>
-
                 <div className="benefit-item">
                   <span className="benefit-icon"><FaCertificate /></span>
                   <div>
-                    <strong>Career-ready learning</strong>
-                    <p>Focus on skills you can apply to real projects.</p>
+                    <strong>Build your skills</strong>
+                    <p>Keep improving with each new lesson.</p>
                   </div>
                 </div>
               </div>
 
               <a href="#categories" className="btn btn-primary">
-                Discover your path <FaArrowRight />
+                Explore categories <FaArrowRight />
               </a>
             </div>
           </div>
         </section>
 
-        {/* HOW IT WORKS */}
         <section className="section how-section">
           <div className="container">
-            <div className="section-heading centered-heading" data-aos="fade-up">
+            <div className="section-heading centered-heading">
               <div>
-                <span className="section-kicker">
-                  SIMPLE STEPS, REAL PROGRESS
-                </span>
-                <h2>
-                  Start learning in <span className="text-gradient">3 steps.</span>
-                </h2>
-                <p>Your next skill is closer than you think.</p>
+                <span className="section-kicker">HOW IT WORKS</span>
+                <h2>Get started in three steps.</h2>
+                <p>A simple way to begin your learning journey.</p>
               </div>
             </div>
 
             <div className="steps-grid">
-              <div className="step-card" data-aos="fade-up">
-                <span className="step-number">01</span>
+              <div className="step-card">
+                
                 <span className="step-icon"><FaSearch /></span>
                 <h3>Explore</h3>
-                <p>Find a course that matches your interests and goals.</p>
+                <p>Find a course that matches your interests.</p>
               </div>
-
-              <div
-                className="step-card"
-                data-aos="fade-up"
-                data-aos-delay="120"
-              >
-                <span className="step-number">02</span>
+              <div className="step-card">
+                
                 <span className="step-icon"><FaPlay /></span>
                 <h3>Learn</h3>
-                <p>Follow lessons, practise new ideas and build projects.</p>
+                <p>Follow lessons and practise new skills.</p>
               </div>
-
-              <div
-                className="step-card"
-                data-aos="fade-up"
-                data-aos-delay="240"
-              >
-                <span className="step-number">03</span>
+              <div className="step-card">
+                
                 <span className="step-icon"><FaCertificate /></span>
                 <h3>Grow</h3>
-                <p>Apply your skills and keep moving toward your goals.</p>
+                <p>Use your skills and continue improving.</p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* TESTIMONIALS */}
         <section className="section reviews-section" id="reviews">
           <div className="container reviews-grid">
-            <div className="reviews-intro" data-aos="fade-right">
+            <div className="reviews-intro">
               <span className="section-kicker">LEARNER STORIES</span>
-
-              <h2>
-                Real growth.
-                <br />
-                <span className="text-gradient">Real confidence.</span>
-              </h2>
-
+              <h2>Learning brings new opportunities.</h2>
               <p>
-                Every learning journey is different. Get inspired by people
-                building new skills and exploring new possibilities.
+                Every learner has a different goal. Read about their learning
+                experiences and progress.
               </p>
 
               <div className="review-score">
@@ -951,7 +791,7 @@ function App() {
                       <FaStar key={star} />
                     ))}
                   </div>
-                  <span>Illustrative learner rating</span>
+                  <span>Sample learner rating</span>
                 </div>
               </div>
 
@@ -967,7 +807,6 @@ function App() {
                 >
                   ←
                 </button>
-
                 <button
                   aria-label="Next testimonial"
                   onClick={() =>
@@ -981,41 +820,33 @@ function App() {
               </div>
             </div>
 
-            <article className="testimonial-card" data-aos="fade-left">
+            <article className="testimonial-card">
               <div className="quote-mark">“</div>
-
               <div className="review-stars">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <FaStar key={star} />
                 ))}
               </div>
-
               <p className="testimonial-text">
                 {testimonials[testimonialIndex].text}
               </p>
-
               <div className="testimonial-person">
                 <img
                   src={testimonials[testimonialIndex].image}
                   alt={testimonials[testimonialIndex].name}
                 />
-
                 <div>
                   <strong>{testimonials[testimonialIndex].name}</strong>
                   <span>{testimonials[testimonialIndex].role}</span>
                 </div>
-
-                <FaCheckCircle className="verified-icon" />
+                <FaCheckCircle />
               </div>
-
               <div className="testimonial-dots">
                 {testimonials.map((item, index) => (
                   <button
                     key={item.name}
-                    className={
-                      index === testimonialIndex ? "dot-active" : ""
-                    }
-                    aria-label={`Show testimonial ${index + 1}`}
+                    className={index === testimonialIndex ? "dot-active" : ""}
+                    aria-label={`Show review ${index + 1}`}
                     onClick={() => setTestimonialIndex(index)}
                   />
                 ))}
@@ -1024,51 +855,33 @@ function App() {
           </div>
         </section>
 
-        {/* FAQ */}
         <section className="section faq-section" id="faq">
           <div className="container faq-grid">
-            <div className="faq-intro" data-aos="fade-right">
-              <span className="section-kicker">GOT QUESTIONS?</span>
-
-              <h2>
-                Good questions.
-                <br />
-                <span className="text-gradient">Clear answers.</span>
-              </h2>
-
-              <p>
-                Everything you need to know before starting your learning
-                journey with BrightLearn.
-              </p>
-
+            <div className="faq-intro">
+              <span className="section-kicker">FREQUENTLY ASKED QUESTIONS</span>
+              <h2>Questions about learning?</h2>
+              <p>Find answers to common questions before you get started.</p>
               <a href="#contact-page" className="text-link">
-                Ask us a question <FaArrowRight />
+                Contact us <FaArrowRight />
               </a>
             </div>
 
-            <div className="faq-list" data-aos="fade-left">
+            <div className="faq-list">
               {faqs.map((faq, index) => (
                 <div
-                  className={`faq-item ${
-                    activeFaq === index ? "faq-open" : ""
-                  }`}
+                  className={`faq-item ${activeFaq === index ? "faq-open" : ""}`}
                   key={faq.question}
                 >
                   <button
                     className="faq-question"
-                    onClick={() =>
-                      setActiveFaq(activeFaq === index ? -1 : index)
-                    }
+                    onClick={() => setActiveFaq(activeFaq === index ? -1 : index)}
                     aria-expanded={activeFaq === index}
                   >
                     <span>{faq.question}</span>
                     <FaChevronDown />
                   </button>
-
                   {activeFaq === index && (
-                    <div className="faq-answer">
-                      <p>{faq.answer}</p>
-                    </div>
+                    <div className="faq-answer"><p>{faq.answer}</p></div>
                   )}
                 </div>
               ))}
@@ -1076,25 +889,13 @@ function App() {
           </div>
         </section>
 
-        {/* NEWSLETTER */}
         <section className="newsletter-section" id="newsletter">
           <div className="container">
-            <div className="newsletter-card" data-aos="zoom-in">
-              <div className="newsletter-decoration" />
-
+            <div className="newsletter-card">
               <div className="newsletter-copy">
-                <span className="section-kicker">
-                  A LITTLE INSPIRATION, REGULARLY
-                </span>
-
-                <h2>
-                  Make room for <span className="text-gradient">growth.</span>
-                </h2>
-
-                <p>
-                  Get learning tips, course highlights and fresh ideas in
-                  your inbox.
-                </p>
+                <span className="section-kicker">STAY UPDATED</span>
+                <h2>Keep learning with BrightLearn.</h2>
+                <p>Get course updates and useful learning tips by email.</p>
               </div>
 
               {subscribed ? (
@@ -1102,9 +903,7 @@ function App() {
                   <FaCheckCircle />
                   <div>
                     <strong>Thanks for subscribing!</strong>
-                    <span>
-                      This demo shows the subscription confirmation.
-                    </span>
+                    <span>This is a demo confirmation.</span>
                   </div>
                 </div>
               ) : (
@@ -1117,184 +916,120 @@ function App() {
                       value={email}
                       onChange={(event) => setEmail(event.target.value)}
                       required
-                      aria-label="Email address"
                     />
                   </div>
-
                   <button type="submit" className="btn btn-primary">
                     Subscribe <FaPaperPlane />
                   </button>
-
-                  <small>No spam. Just useful learning inspiration.</small>
+                  <small>No spam. Just learning updates.</small>
                 </form>
               )}
             </div>
           </div>
         </section>
 
-        {/* CONTACT PAGE */}
         <section className="section contact-section" id="contact-page">
           <div className="container">
-            <div className="contact-heading" data-aos="fade-up">
-              <span className="section-kicker">LET'S CONNECT</span>
-
-              <h2>
-                Have a question?
-                <br />
-                <span className="text-gradient">
-                  We'd love to hear from you.
-                </span>
-              </h2>
-
+            <div className="contact-heading">
+              <span className="section-kicker">CONTACT US</span>
+              <h2>How can we help you?</h2>
               <p>
-                Need help choosing a course or have a question about
-                BrightLearn? Send us a message and let us know how we can help.
+                Send a message if you have questions about courses or the
+                learning platform.
               </p>
             </div>
 
             <div className="contact-grid">
-              {/* CONTACT DETAILS */}
-              <div className="contact-info-card" data-aos="fade-right">
+              <div className="contact-info-card">
                 <span className="contact-label">CONTACT INFORMATION</span>
-
-                <h3>Let's start a conversation.</h3>
-
+                <h3>Let's talk.</h3>
                 <p className="contact-info-description">
-                  We're here to help you take the next step in your learning
-                  journey. Reach out using any of the details below.
+                  Get in touch using the details below.
                 </p>
 
                 <div className="contact-info-item">
-                  <span className="contact-info-icon">
-                    <FaEnvelope />
-                  </span>
+                  <span className="contact-info-icon"><FaEnvelope /></span>
                   <div>
-                    <strong>Email us</strong>
-                    <a href="mailto:uk556513@gmail.com">
-                      uk556513@gmail.com
-                    </a>
+                    <strong>Email</strong>
+                    <a href="mailto:uk556513@gmail.com">uk556513@gmail.com</a>
                   </div>
                 </div>
 
                 <div className="contact-info-item">
-                  <span className="contact-info-icon">
-                    <FaPhone />
-                  </span>
+                  <span className="contact-info-icon"><FaPhone /></span>
                   <div>
-                    <strong>Call us</strong>
+                    <strong>Phone</strong>
                     <a href="tel:+919342568375">+91 93425 68375</a>
                   </div>
                 </div>
 
                 <div className="contact-info-item">
-                  <span className="contact-info-icon">
-                    <FaMapMarkerAlt />
-                  </span>
+                  <span className="contact-info-icon"><FaMapMarkerAlt /></span>
                   <div>
-                    <strong>Our location</strong>
+                    <strong>Location</strong>
                     <span>HSR Layout, Bengaluru, India</span>
                   </div>
                 </div>
 
                 <div className="contact-info-item">
-                  <span className="contact-info-icon">
-                    <FaClock />
-                  </span>
+                  <span className="contact-info-icon"><FaClock /></span>
                   <div>
                     <strong>Working hours</strong>
-                    <span>Monday – Saturday</span>
-                    <small>9:00 AM – 6:00 PM</small>
+                    <span>Monday – Saturday, 9 AM – 6 PM</span>
                   </div>
                 </div>
 
                 <div className="contact-social-area">
-                  <strong>Follow BrightLearn</strong>
-
+                  <strong>Follow us</strong>
                   <div className="contact-social-links">
-                    <a
-                      href="https://facebook.com"
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label="Facebook"
-                    >
-                      <FaFacebookF />
-                    </a>
-
-                    <a
-                      href="https://instagram.com"
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label="Instagram"
-                    >
-                      <FaInstagram />
-                    </a>
-
-                    <a
-                      href="https://linkedin.com"
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label="LinkedIn"
-                    >
-                      <FaLinkedinIn />
-                    </a>
-
-                    <a
-                      href="https://youtube.com"
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label="YouTube"
-                    >
-                      <FaYoutube />
-                    </a>
+                    <a href="https://facebook.com" aria-label="Facebook"><FaFacebookF /></a>
+                    <a href="https://instagram.com" aria-label="Instagram"><FaInstagram /></a>
+                    <a href="https://linkedin.com" aria-label="LinkedIn"><FaLinkedinIn /></a>
+                    <a href="https://youtube.com" aria-label="YouTube"><FaYoutube /></a>
                   </div>
                 </div>
               </div>
 
-              {/* CONTACT FORM */}
-              <div className="contact-form-card" data-aos="fade-left">
-                <span className="section-kicker">SEND US A MESSAGE</span>
-
-                <h3>How can we help you?</h3>
-
+              <div className="contact-form-card">
+                <span className="section-kicker">SEND A MESSAGE</span>
+                <h3>Write to our team</h3>
                 <p className="contact-form-description">
-                  Fill in the details below to get in touch with our team.
+                  Fill in the details below.
                 </p>
 
                 {contactSubmitted ? (
                   <div className="contact-success">
-                    <span className="contact-success-icon">
-                      <FaCheckCircle />
-                    </span>
-
-                    <h3>Thank you for reaching out!</h3>
-
+                    <FaCheckCircle />
+                    <h3>Thank you for your message!</h3>
                     <p>
-                      Your form has been submitted in this demo. To actually
-                      deliver messages, connect this form to a backend or an
-                      email service.
+                      This demo displays a confirmation. A backend or email
+                      service is needed to deliver the message.
                     </p>
-
                     <button
                       type="button"
                       className="btn btn-primary"
-                      onClick={() => setContactSubmitted(false)}
+                      onClick={() => {
+                        setContactSubmitted(false);
+                        setContactForm({
+                          name: "",
+                          email: "",
+                          subject: "",
+                          message: "",
+                        });
+                      }}
                     >
-                      Send another message <FaArrowRight />
+                      Send another message
                     </button>
                   </div>
                 ) : (
-                  <form
-                    className="contact-form"
-                    onSubmit={handleContactSubmit}
-                  >
+                  <form className="contact-form" onSubmit={handleContactSubmit}>
                     <div className="contact-form-row">
                       <div className="contact-field">
                         <label htmlFor="contact-name">Full name *</label>
-
                         <input
                           id="contact-name"
                           type="text"
-                          placeholder="Enter your full name"
+                          placeholder="Your name"
                           value={contactForm.name}
                           onChange={(event) =>
                             setContactForm({
@@ -1307,14 +1042,11 @@ function App() {
                       </div>
 
                       <div className="contact-field">
-                        <label htmlFor="contact-email">
-                          Email address *
-                        </label>
-
+                        <label htmlFor="contact-email">Email address *</label>
                         <input
                           id="contact-email"
                           type="email"
-                          placeholder="Enter your email"
+                          placeholder="Your email"
                           value={contactForm.email}
                           onChange={(event) =>
                             setContactForm({
@@ -1329,7 +1061,6 @@ function App() {
 
                     <div className="contact-field">
                       <label htmlFor="contact-subject">Subject *</label>
-
                       <select
                         id="contact-subject"
                         value={contactForm.subject}
@@ -1341,28 +1072,21 @@ function App() {
                         }
                         required
                       >
-                        <option value="">Select a subject</option>
-                        <option value="Course Information">
-                          Course Information
-                        </option>
-                        <option value="Technical Support">
-                          Technical Support
-                        </option>
-                        <option value="Payment Enquiry">
-                          Payment Enquiry
-                        </option>
+                        <option value="">Choose a subject</option>
+                        <option value="Course Information">Course Information</option>
+                        <option value="Technical Support">Technical Support</option>
+                        <option value="Payment Enquiry">Payment Enquiry</option>
                         <option value="Partnership">Partnership</option>
                         <option value="Other">Other</option>
                       </select>
                     </div>
 
                     <div className="contact-field">
-                      <label htmlFor="contact-message">Your message *</label>
-
+                      <label htmlFor="contact-message">Message *</label>
                       <textarea
                         id="contact-message"
-                        rows="6"
-                        placeholder="Tell us how we can help..."
+                        rows="5"
+                        placeholder="Write your message..."
                         value={contactForm.message}
                         onChange={(event) =>
                           setContactForm({
@@ -1374,17 +1098,9 @@ function App() {
                       />
                     </div>
 
-                    <button
-                      type="submit"
-                      className="btn btn-primary contact-submit-btn"
-                    >
+                    <button className="btn btn-primary contact-submit-btn" type="submit">
                       Send Message <FaPaperPlane />
                     </button>
-
-                    <small className="contact-privacy-note">
-                      <FaCheckCircle />
-                      Please provide a valid email address.
-                    </small>
                   </form>
                 )}
               </div>
@@ -1393,15 +1109,11 @@ function App() {
         </section>
       </main>
 
-      {/* FOOTER */}
       <footer className="site-footer" id="contact">
         <div className="container footer-main">
           <div className="footer-brand-column">
             <a className="brand footer-brand" href="#home">
-              <span className="brand-icon">
-                <FaGraduationCap />
-              </span>
-
+              <span className="brand-icon"><FaGraduationCap /></span>
               <span>
                 Bright<span className="text-gradient">Learn</span>
                 <small>LEARN SOMETHING NEW</small>
@@ -1409,23 +1121,15 @@ function App() {
             </a>
 
             <p>
-              Good learning opens new doors. Discover useful skills, explore
-              your interests and take the next step with BrightLearn.
+              Explore new subjects, practise useful skills and keep learning
+              with BrightLearn.
             </p>
 
             <div className="footer-socials">
-              <a href="https://facebook.com" aria-label="Facebook">
-                <FaFacebookF />
-              </a>
-              <a href="https://instagram.com" aria-label="Instagram">
-                <FaInstagram />
-              </a>
-              <a href="https://linkedin.com" aria-label="LinkedIn">
-                <FaLinkedinIn />
-              </a>
-              <a href="https://youtube.com" aria-label="YouTube">
-                <FaYoutube />
-              </a>
+              <a href="https://facebook.com" aria-label="Facebook"><FaFacebookF /></a>
+              <a href="https://instagram.com" aria-label="Instagram"><FaInstagram /></a>
+              <a href="https://linkedin.com" aria-label="LinkedIn"><FaLinkedinIn /></a>
+              <a href="https://youtube.com" aria-label="YouTube"><FaYoutube /></a>
             </div>
           </div>
 
@@ -1433,72 +1137,55 @@ function App() {
             <h4>Explore</h4>
             <a href="#home">Home</a>
             <a href="#categories">Categories</a>
-            <a href="#courses">Popular courses</a>
+            <a href="#courses">Courses</a>
             <a href="#about">About us</a>
-            <a href="#reviews">Learner stories</a>
+            <a href="#reviews">Reviews</a>
           </div>
 
           <div className="footer-column">
             <h4>Popular topics</h4>
-            <a
-              href="#courses"
-              onClick={() => setActiveCategory("Development")}
-            >
-              Web development
-            </a>
-            <a
-              href="#courses"
-              onClick={() => setActiveCategory("Data Science")}
-            >
-              Data science
-            </a>
-            <a href="#courses" onClick={() => setActiveCategory("Design")}>
-              UI/UX design
-            </a>
-            <a href="#courses" onClick={() => setActiveCategory("Business")}>
-              Business
-            </a>
-            <a href="#courses" onClick={() => setActiveCategory("Marketing")}>
-              Marketing
-            </a>
+            {["Development", "Data Science", "Design", "Business", "Marketing"].map(
+              (item) => (
+                <a
+                  key={item}
+                  href="#courses"
+                  onClick={() => {
+                    setActiveCategory(item);
+                    setShowAllCourses(true);
+                  }}
+                >
+                  {item}
+                </a>
+              )
+            )}
           </div>
 
           <div className="footer-column footer-contact">
             <h4>Get in touch</h4>
-
-            <a href="mailto:uk556513@gmail.com">
-              <FaEnvelope /> uk556513@gmail.com
-            </a>
-
-            <a href="tel:+919342568375">
-              <FaPhone /> +91 93425 68375
-            </a>
-
-            <span>
-              <FaMapMarkerAlt /> HSR Layout Bengaluru
-            </span>
-
+            <a href="mailto:uk556513@gmail.com"><FaEnvelope /> uk556513@gmail.com</a>
+            <a href="tel:+919342568375"><FaPhone /> +91 93425 68375</a>
+            <span><FaMapMarkerAlt /> Bengaluru, India</span>
             <a href="#faq">Help & FAQs</a>
             <a href="#contact-page">Contact form</a>
           </div>
         </div>
 
         <div className="container footer-bottom">
-          <p>
-            © {new Date().getFullYear()} BrightLearn. All rights reserved.
-          </p>
-
+          <p>© {new Date().getFullYear()} BrightLearn. All rights reserved.</p>
           <div>
             <a href="#faq">Help Center</a>
             <a href="#contact-page">Contact</a>
             <a href="#home">Back to top ↑</a>
           </div>
-
           <span>Learn · Build · Grow</span>
         </div>
       </footer>
     </div>
   );
+}
+
+function FaLaptopCodeFallback() {
+  return <FaGraduationCap />;
 }
 
 export default App;
