@@ -821,7 +821,7 @@ function App() {
             </div>
 
             <article className="testimonial-card">
-              <div className="quote-mark">“</div>
+              <div className="quote-mark"></div>
               <div className="review-stars">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <FaStar key={star} />
