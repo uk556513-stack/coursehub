@@ -894,7 +894,7 @@ function App() {
               <div className="newsletter-copy">
                 <span className="section-kicker">STAY UPDATED</span>
                 <h2>Keep learning with BrightLearn.</h2>
-                <p>Get course updates and useful learning tips by email.</p>
+                
               </div>
 
               {subscribed ? (
@@ -920,7 +920,7 @@ function App() {
                   <button type="submit" className="btn btn-primary">
                     Subscribe <FaPaperPlane />
                   </button>
-                  <small>No spam. Just learning updates.</small>
+                 
                 </form>
               )}
             </div>
