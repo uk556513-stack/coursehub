@@ -1,3 +1,17 @@
+
+
+* {
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+html,
+body,
+button,
+input,
+textarea,
+select {
+  font-family: Arial, Helvetica, sans-serif !important;
+}
 :root {
   --blue-dark: #03045e;
   --blue: #0077b6;

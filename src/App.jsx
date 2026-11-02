@@ -375,12 +375,7 @@ function App() {
     <div className="app-shell">
       {notice && <div className="toast-message">{notice}</div>}
 
-      <div className="announcement-bar">
-        Learn something new and take the next step.
-        <a href="#courses">
-          Explore courses <FaArrowRight />
-        </a>
-      </div>
+      
 
       <header className="site-header">
         <nav className="navbar container">
@@ -388,7 +383,7 @@ function App() {
             <span className="brand-icon"><FaGraduationCap /></span>
             <span>
               Bright<span className="text-gradient">Learn</span>
-              <small>LEARN SOMETHING NEW</small>
+              
             </span>
           </a>
 
@@ -492,11 +487,7 @@ function App() {
               </div>
 
               <div className="floating-card floating-card-bottom">
-                <div className="mini-avatars">
-                  <img src={nivithaImage} alt="" />
-                  <img src={udayImage} alt="" />
-                  <img src={meeraImage} alt="" />
-                </div>
+                
                 <div>
                   <strong>Keep learning</strong>
                   <small>One step at a time</small>
@@ -510,9 +501,9 @@ function App() {
           <div className="container">
             <div className="section-heading" data-aos="fade-up">
               <div>
-                <span className="section-kicker">EXPLORE CATEGORIES</span>
+                
                 <h2>Find a subject you enjoy.</h2>
-                <p>Choose an area and find a course to get started.</p>
+                
               </div>
               <a href="#courses" className="text-link">
                 Browse courses <FaArrowRight />
@@ -548,9 +539,9 @@ function App() {
           <div className="container">
             <div className="section-heading" data-aos="fade-up">
               <div>
-                <span className="section-kicker">POPULAR COURSES</span>
+                
                 <h2>Learn something useful.</h2>
-                <p>Explore courses and choose what you want to learn next.</p>
+               
               </div>
             </div>
 
@@ -676,9 +667,9 @@ function App() {
           <div className="container learning-banner-inner">
             <FaGraduationCap className="banner-icon" />
             <div className="banner-copy">
-              <span>KEEP MOVING FORWARD</span>
+             
               <h2>Small steps can lead to big achievements.</h2>
-              <p>Choose a course and make time to learn something new.</p>
+             
             </div>
             <a href="#courses" className="btn btn-light">
               Start learning <FaArrowRight />
@@ -700,7 +691,7 @@ function App() {
             </div>
 
             <div className="about-copy" data-aos="fade-left">
-              <span className="section-kicker">ABOUT BRIGHTLEARN</span>
+              
               <h2>Learn today. Use your skills tomorrow.</h2>
               <p>
                 BrightLearn helps learners explore different subjects and
@@ -732,9 +723,6 @@ function App() {
                 </div>
               </div>
 
-              <a href="#categories" className="btn btn-primary">
-                Explore categories <FaArrowRight />
-              </a>
             </div>
           </div>
         </section>
@@ -743,9 +731,9 @@ function App() {
           <div className="container">
             <div className="section-heading centered-heading">
               <div>
-                <span className="section-kicker">HOW IT WORKS</span>
+               
                 <h2>Get started in three steps.</h2>
-                <p>A simple way to begin your learning journey.</p>
+                
               </div>
             </div>
 
@@ -775,7 +763,7 @@ function App() {
         <section className="section reviews-section" id="reviews">
           <div className="container reviews-grid">
             <div className="reviews-intro">
-              <span className="section-kicker">LEARNER STORIES</span>
+             
               <h2>Learning brings new opportunities.</h2>
               <p>
                 Every learner has a different goal. Read about their learning
@@ -838,7 +826,7 @@ function App() {
                   <strong>{testimonials[testimonialIndex].name}</strong>
                   <span>{testimonials[testimonialIndex].role}</span>
                 </div>
-                <FaCheckCircle />
+                
               </div>
               <div className="testimonial-dots">
                 {testimonials.map((item, index) => (
@@ -857,7 +845,7 @@ function App() {
         <section className="section faq-section" id="faq">
           <div className="container faq-grid">
             <div className="faq-intro">
-              <span className="section-kicker">FREQUENTLY ASKED QUESTIONS</span>
+              
               <h2>Questions about learning?</h2>
               <p>Find answers to common questions before you get started.</p>
               <a href="#contact-page" className="text-link">
@@ -892,7 +880,7 @@ function App() {
           <div className="container">
             <div className="newsletter-card">
               <div className="newsletter-copy">
-                <span className="section-kicker">STAY UPDATED</span>
+                
                 <h2>Keep learning with BrightLearn.</h2>
                 
               </div>
@@ -930,21 +918,16 @@ function App() {
         <section className="section contact-section" id="contact-page">
           <div className="container">
             <div className="contact-heading">
-              <span className="section-kicker">CONTACT US</span>
+              
               <h2>How can we help you?</h2>
-              <p>
-                Send a message if you have questions about courses or the
-                learning platform.
-              </p>
+              
             </div>
 
             <div className="contact-grid">
               <div className="contact-info-card">
                 <span className="contact-label">CONTACT INFORMATION</span>
                 <h3>Let's talk.</h3>
-                <p className="contact-info-description">
-                  Get in touch using the details below.
-                </p>
+                
 
                 <div className="contact-info-item">
                   <span className="contact-info-icon"><FaEnvelope /></span>
